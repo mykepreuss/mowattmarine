@@ -410,6 +410,10 @@ textarea {
   box-shadow: 0 18px 54px rgba(7, 21, 29, 0.1);
 }
 
+.service-primary > * {
+  min-width: 0;
+}
+
 .image-frame {
   position: relative;
   margin: 0;
@@ -433,7 +437,6 @@ textarea {
 
 .image-frame--barge {
   min-height: 430px;
-  aspect-ratio: 16 / 10;
 }
 
 .image-frame--barge img {
