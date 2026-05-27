@@ -246,8 +246,7 @@ textarea {
 }
 
 .hero__image,
-.hero__overlay,
-.chart-lines {
+.hero__overlay {
   position: absolute;
   inset: 0;
 }
@@ -267,23 +266,13 @@ textarea {
     linear-gradient(0deg, rgba(7, 21, 29, 0.74) 0%, rgba(7, 21, 29, 0.12) 44%, rgba(7, 21, 29, 0.58) 100%);
 }
 
-.chart-lines {
-  z-index: -1;
-  opacity: 0.34;
-  background:
-    linear-gradient(120deg, transparent 0 45%, rgba(255, 255, 255, 0.36) 45% 45.25%, transparent 45.25%),
-    repeating-linear-gradient(0deg, transparent 0 87px, rgba(255, 255, 255, 0.11) 88px 89px),
-    repeating-linear-gradient(90deg, transparent 0 115px, rgba(255, 255, 255, 0.08) 116px 117px);
-}
-
 .hero__inner {
   width: min(var(--max), calc(100% - 48px));
   margin: 0 auto;
   padding: 168px 0 126px;
 }
 
-.eyebrow,
-.section__label {
+.eyebrow {
   margin: 0 0 15px;
   color: var(--cedar);
   font-family: "Barlow Condensed", sans-serif;
@@ -316,8 +305,7 @@ textarea {
   line-height: 1.55;
 }
 
-.hero__actions,
-.emergency__actions {
+.hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -377,115 +365,26 @@ textarea {
   border-color: var(--ink);
 }
 
-.hero__dock-strip {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  width: min(var(--max), calc(100% - 48px));
-  transform: translateX(-50%);
-  border-top: 1px solid rgba(255, 255, 255, 0.28);
-  background: rgba(7, 21, 29, 0.72);
-  backdrop-filter: blur(16px);
-}
-
-.hero__dock-strip a {
-  min-height: 74px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0 24px;
-  border-right: 1px solid rgba(255, 255, 255, 0.16);
-  color: var(--white);
-  text-decoration: none;
-}
-
-.hero__dock-strip small {
-  color: var(--cedar);
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 13px;
-  font-weight: 900;
-}
-
-.hero__dock-strip strong {
-  margin-top: 3px;
-  font-size: 13px;
-  font-weight: 900;
-  line-height: 1.1;
-  text-transform: uppercase;
-}
-
-.hero__dock-strip a:hover,
-.hero__dock-strip a:focus-visible {
-  background: rgba(255, 255, 255, 0.08);
-  outline: none;
-}
-
-.hero__dock-strip a:last-child {
-  border-right: 0;
-}
-
 .section {
   width: min(var(--max), calc(100% - 48px));
   margin: 0 auto;
   padding: 106px 0;
 }
 
-.intro {
-  display: grid;
-  grid-template-columns: 170px minmax(0, 1fr) 360px;
-  gap: 54px;
-  align-items: start;
-}
-
-.intro h2,
 .section__heading h2,
 .model h2,
 .waters h2,
-.emergency h2,
 .contact h2 {
   font-size: 48px;
 }
 
-.intro p,
 .section__heading p,
 .model__content p,
 .waters__content p,
-.emergency__text p,
 .contact__intro p {
   margin: 18px 0 0;
   color: var(--muted);
   font-size: 17px;
-}
-
-.intro__metrics {
-  display: grid;
-  border-top: 1px solid var(--line);
-}
-
-.intro__metrics div {
-  padding: 22px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.intro__metrics strong {
-  display: block;
-  color: var(--harbour);
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 42px;
-  line-height: 0.95;
-  text-transform: uppercase;
-}
-
-.intro__metrics span {
-  display: block;
-  margin-top: 4px;
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 800;
-  text-transform: uppercase;
 }
 
 .section__heading {
@@ -494,10 +393,6 @@ textarea {
   gap: 60px;
   align-items: end;
   margin-bottom: 42px;
-}
-
-.services {
-  padding-top: 0;
 }
 
 .service-showcase {
@@ -825,51 +720,6 @@ textarea {
   font-size: 14px;
 }
 
-.emergency {
-  display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  gap: 42px;
-  align-items: center;
-}
-
-.emergency-list {
-  display: grid;
-  gap: 10px;
-  margin: 28px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.emergency-list li {
-  position: relative;
-  padding-left: 24px;
-  color: var(--ink-2);
-  font-size: 14px;
-  font-weight: 800;
-}
-
-.emergency-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.7em;
-  width: 10px;
-  height: 2px;
-  background: var(--signal);
-}
-
-.emergency__image {
-  overflow: hidden;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
-.emergency__image img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-}
-
 .contact {
   width: 100%;
   max-width: none;
@@ -944,6 +794,30 @@ textarea {
   margin: 12px 0 0;
   color: var(--muted);
   font-size: 15px;
+}
+
+.contact-urgent {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 4px;
+  padding: 16px 18px;
+  border: 1px solid rgba(227, 107, 44, 0.22);
+  border-left: 5px solid var(--signal);
+  border-radius: 4px;
+  background: rgba(227, 107, 44, 0.08);
+}
+
+.contact-urgent strong {
+  color: var(--ink);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 22px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.contact-urgent span {
+  color: var(--muted);
+  font-size: 14px;
 }
 
 .contact-form label {
@@ -1053,7 +927,7 @@ textarea {
 
 .site-footer {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 24px;
   align-items: center;
   padding: 40px max(24px, calc((100% - var(--max)) / 2));
@@ -1075,17 +949,17 @@ textarea {
   margin-top: 6px;
 }
 
-.site-footer nav {
+.site-footer__contact {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+  justify-content: flex-end;
 }
 
 .site-footer a {
   font-size: 13px;
   font-weight: 900;
   text-decoration: none;
-  text-transform: uppercase;
 }
 
 .site-footer a:hover,
@@ -1146,22 +1020,10 @@ textarea {
     font-size: 62px;
   }
 
-  .intro,
   .section__heading,
   .model,
-  .emergency,
   .contact__layout {
     grid-template-columns: 1fr;
-  }
-
-  .intro__metrics {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    border-top: 0;
-  }
-
-  .intro__metrics div {
-    border-top: 1px solid var(--line);
   }
 
   .service-primary {
@@ -1235,8 +1097,7 @@ textarea {
     font-size: 18px;
   }
 
-  .hero__actions,
-  .emergency__actions {
+  .hero__actions {
     display: grid;
   }
 
@@ -1244,29 +1105,18 @@ textarea {
     width: 100%;
   }
 
-  .hero__dock-strip {
-    display: none;
-  }
-
   .section {
     width: min(100% - 32px, var(--max));
     padding: 72px 0;
   }
 
-  .intro {
-    gap: 28px;
-  }
-
-  .intro h2,
   .section__heading h2,
   .model h2,
   .waters h2,
-  .emergency h2,
   .contact h2 {
     font-size: 38px;
   }
 
-  .intro__metrics,
   .service-list,
   .process,
   .contact-form {
@@ -1337,6 +1187,10 @@ textarea {
   .site-footer {
     grid-template-columns: 1fr;
     padding: 36px 16px 88px;
+  }
+
+  .site-footer__contact {
+    justify-content: flex-start;
   }
 
   .mobile-action-bar {
