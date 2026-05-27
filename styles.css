@@ -1192,8 +1192,14 @@ textarea {
   }
 
   .site-header {
+    grid-template-columns: auto 1fr auto;
     gap: 12px;
     padding: 12px 16px;
+  }
+
+  .nav-toggle {
+    grid-column: 3;
+    justify-self: end;
   }
 
   .brand__mark {
