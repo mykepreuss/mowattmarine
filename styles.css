@@ -14,7 +14,7 @@
   --shadow: 0 24px 70px rgba(7, 21, 29, 0.18);
   --radius: 8px;
   --max: 1180px;
-  --header-offset: 112px;
+  --header-offset: 90px;
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 

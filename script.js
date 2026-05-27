@@ -5,7 +5,7 @@ const root = document.documentElement;
 let urgentNoteTimer;
 
 function headerOffset() {
-  return Math.ceil(header.getBoundingClientRect().height + 28);
+  return Math.ceil(header.getBoundingClientRect().bottom);
 }
 
 function setHeaderOffset() {
