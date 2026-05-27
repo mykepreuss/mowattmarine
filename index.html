@@ -22,7 +22,7 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="styles.css?v=20260527-scroll-offset">
+    <link rel="stylesheet" href="styles.css?v=20260527-whatsapp-fallback">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -97,7 +97,14 @@
                 <path d="M5 12h12.2l-4.5-4.5L14.1 6 21 12l-6.9 6-1.4-1.5 4.5-4.5H5v-2Z"></path>
               </svg>
             </a>
-            <a class="button button--urgent" href="#contact" data-emergency-intake>
+            <a
+              class="button button--urgent"
+              href="https://wa.me/17789962453"
+              target="_blank"
+              rel="noopener"
+              data-emergency-intake
+              data-whatsapp-scheme="whatsapp://send?phone=17789962453"
+            >
               Emergency response
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 2 2.5 20.5h19L12 2Zm1 14h-2v-2h2v2Zm0-4h-2V8h2v4Z"></path>
@@ -337,6 +344,6 @@
       <a href="https://wa.me/17789962453" target="_blank" rel="noopener">WhatsApp</a>
     </div>
 
-    <script src="script.js?v=20260527-scroll-offset"></script>
+    <script src="script.js?v=20260527-whatsapp-fallback"></script>
   </body>
 </html>

@@ -2,6 +2,7 @@ const header = document.querySelector("[data-header]");
 const nav = document.querySelector("[data-nav]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const root = document.documentElement;
+const whatsappFallbackDelay = 1400;
 let urgentNoteTimer;
 
 function headerOffset() {
@@ -76,6 +77,61 @@ function setEmergencyIntakeMode() {
   highlightUrgentNote();
 }
 
+function fallbackToEmergencyIntake() {
+  setEmergencyIntakeMode();
+  closeNavigation();
+  scrollToTarget("#contact");
+}
+
+function tryWhatsAppThenFallback(link) {
+  const whatsappScheme = link.dataset.whatsappScheme;
+
+  if (!whatsappScheme) {
+    fallbackToEmergencyIntake();
+    return;
+  }
+
+  let pageLeftForWhatsApp = false;
+  let fallbackTimer;
+  const launcher = document.createElement("iframe");
+
+  launcher.hidden = true;
+  launcher.setAttribute("aria-hidden", "true");
+  launcher.style.display = "none";
+
+  function cleanup() {
+    window.clearTimeout(fallbackTimer);
+    document.removeEventListener("visibilitychange", detectWhatsAppHandoff);
+    window.removeEventListener("pagehide", markWhatsAppHandoff);
+    launcher.remove();
+  }
+
+  function markWhatsAppHandoff() {
+    pageLeftForWhatsApp = true;
+    cleanup();
+  }
+
+  function detectWhatsAppHandoff() {
+    if (document.visibilityState === "hidden") {
+      markWhatsAppHandoff();
+    }
+  }
+
+  document.addEventListener("visibilitychange", detectWhatsAppHandoff);
+  window.addEventListener("pagehide", markWhatsAppHandoff, { once: true });
+
+  fallbackTimer = window.setTimeout(() => {
+    cleanup();
+
+    if (!pageLeftForWhatsApp) {
+      fallbackToEmergencyIntake();
+    }
+  }, whatsappFallbackDelay);
+
+  document.body.append(launcher);
+  launcher.src = whatsappScheme;
+}
+
 navToggle.addEventListener("click", () => {
   const isOpen = nav.classList.toggle("is-open");
   document.body.classList.toggle("nav-open", isOpen);
@@ -92,11 +148,24 @@ nav.addEventListener("click", (event) => {
 });
 
 document.addEventListener("click", (event) => {
-  const link = event.target instanceof Element ? event.target.closest('a[href^="#"]') : null;
+  const clickedLink = event.target instanceof Element ? event.target.closest("a") : null;
 
-  if (!(link instanceof HTMLAnchorElement)) {
+  if (!(clickedLink instanceof HTMLAnchorElement)) {
     return;
   }
+
+  if (clickedLink.hasAttribute("data-emergency-intake")) {
+    event.preventDefault();
+    closeNavigation();
+    tryWhatsAppThenFallback(clickedLink);
+    return;
+  }
+
+  if (!clickedLink.matches('a[href^="#"]')) {
+    return;
+  }
+
+  const link = clickedLink;
 
   const hash = link.getAttribute("href");
 
@@ -111,10 +180,6 @@ document.addEventListener("click", (event) => {
   }
 
   event.preventDefault();
-
-  if (link.hasAttribute("data-emergency-intake")) {
-    setEmergencyIntakeMode();
-  }
 
   closeNavigation();
   scrollToTarget(hash);
