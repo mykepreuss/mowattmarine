@@ -2,6 +2,7 @@ const header = document.querySelector("[data-header]");
 const nav = document.querySelector("[data-nav]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const root = document.documentElement;
+let urgentNoteTimer;
 
 function headerOffset() {
   return Math.ceil(header.getBoundingClientRect().height + 28);
@@ -46,6 +47,35 @@ function closeNavigation() {
   navToggle.setAttribute("aria-label", "Open navigation");
 }
 
+function highlightUrgentNote() {
+  const urgentNote = document.querySelector("[data-emergency-note]");
+
+  if (!urgentNote) {
+    return;
+  }
+
+  urgentNote.classList.remove("is-highlighted");
+  urgentNote.removeAttribute("data-highlighted");
+  urgentNote.getBoundingClientRect();
+  urgentNote.classList.add("is-highlighted");
+  urgentNote.setAttribute("data-highlighted", "true");
+  window.clearTimeout(urgentNoteTimer);
+  urgentNoteTimer = window.setTimeout(() => {
+    urgentNote.classList.remove("is-highlighted");
+    urgentNote.removeAttribute("data-highlighted");
+  }, 3200);
+}
+
+function setEmergencyIntakeMode() {
+  const intakeNeed = document.querySelector('select[name="need"]');
+
+  if (intakeNeed) {
+    intakeNeed.value = "Emergency repair";
+  }
+
+  highlightUrgentNote();
+}
+
 navToggle.addEventListener("click", () => {
   const isOpen = nav.classList.toggle("is-open");
   document.body.classList.toggle("nav-open", isOpen);
@@ -81,6 +111,11 @@ document.addEventListener("click", (event) => {
   }
 
   event.preventDefault();
+
+  if (link.hasAttribute("data-emergency-intake")) {
+    setEmergencyIntakeMode();
+  }
+
   closeNavigation();
   scrollToTarget(hash);
 });

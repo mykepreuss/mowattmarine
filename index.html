@@ -22,7 +22,7 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=20260527-emergency-cta-5">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -97,7 +97,7 @@
                 <path d="M5 12h12.2l-4.5-4.5L14.1 6 21 12l-6.9 6-1.4-1.5 4.5-4.5H5v-2Z"></path>
               </svg>
             </a>
-            <a class="button button--urgent" href="https://wa.me/17789962453" target="_blank" rel="noopener">
+            <a class="button button--urgent" href="#contact" data-emergency-intake>
               Emergency response
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 2 2.5 20.5h19L12 2Zm1 14h-2v-2h2v2Zm0-4h-2V8h2v4Z"></path>
@@ -267,7 +267,7 @@
                 next step is repair, inspection, or emergency response.
               </p>
             </div>
-            <div class="contact-urgent">
+            <div class="contact-urgent" data-emergency-note>
               <strong>Urgent damage?</strong>
               <span>Include photos, exact location, and tide or access constraints so the first response is useful.</span>
             </div>
@@ -286,11 +286,11 @@
             <label>
               Need
               <select name="need">
+                <option>Not sure yet</option>
                 <option>Emergency repair</option>
                 <option>Dock construction</option>
                 <option>Mooring or anchoring</option>
                 <option>Inspection or maintenance</option>
-                <option>Not sure yet</option>
               </select>
             </label>
             <label class="contact-form__message">
@@ -335,6 +335,6 @@
       <a href="https://wa.me/17789962453" target="_blank" rel="noopener">WhatsApp</a>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20260527-emergency-cta-5"></script>
   </body>
 </html>

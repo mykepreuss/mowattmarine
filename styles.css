@@ -808,6 +808,14 @@ textarea {
   border-left: 5px solid var(--signal);
   border-radius: 4px;
   background: rgba(227, 107, 44, 0.08);
+  transition: background 180ms var(--ease), border-color 180ms var(--ease), box-shadow 180ms var(--ease);
+}
+
+.contact-urgent.is-highlighted,
+.contact-urgent[data-highlighted="true"] {
+  border-color: rgba(227, 107, 44, 0.46);
+  background: rgba(227, 107, 44, 0.16);
+  box-shadow: 0 0 0 4px rgba(227, 107, 44, 0.12);
 }
 
 .contact-urgent strong {
