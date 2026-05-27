@@ -416,6 +416,7 @@ textarea {
 
 .image-frame {
   position: relative;
+  width: 100%;
   margin: 0;
   overflow: hidden;
   background: var(--ink);
@@ -1069,6 +1070,10 @@ textarea {
 
   .hero {
     min-height: 642px;
+  }
+
+  .hero__image {
+    transform: none;
   }
 
   .hero__inner {
