@@ -451,6 +451,10 @@ textarea {
   object-position: 50% 54%;
 }
 
+.image-frame--upkeep img {
+  object-position: 50% 58%;
+}
+
 .service-primary__content {
   display: flex;
   flex-direction: column;
@@ -518,13 +522,12 @@ textarea {
   box-shadow: 0 12px 34px rgba(7, 21, 29, 0.08);
 }
 
-.service-line .image-frame,
-.service-line__mark {
+.service-line .image-frame {
   height: 240px;
   aspect-ratio: 16 / 10;
 }
 
-.service-line > div:not(.service-line__mark) {
+.service-line > div {
   padding: 28px;
 }
 
@@ -539,33 +542,6 @@ textarea {
 
 .service-line--urgent p {
   color: rgba(255, 255, 255, 0.74);
-}
-
-.service-line__mark {
-  position: relative;
-  overflow: hidden;
-  background:
-    linear-gradient(135deg, rgba(24, 72, 91, 0.94), rgba(45, 127, 134, 0.82)),
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.13) 0 1px, transparent 1px 22px);
-}
-
-.service-line__mark::before,
-.service-line__mark::after {
-  content: "";
-  position: absolute;
-  left: 28px;
-  right: 28px;
-  height: 46px;
-  border: 1px solid rgba(255, 255, 255, 0.38);
-  transform: skewX(-25deg);
-}
-
-.service-line__mark::before {
-  top: 42px;
-}
-
-.service-line__mark::after {
-  bottom: 42px;
 }
 
 .model {
@@ -1135,7 +1111,7 @@ textarea {
   }
 
   .service-primary__content,
-  .service-line > div:not(.service-line__mark) {
+  .service-line > div {
     padding: 24px;
   }
 
@@ -1143,8 +1119,7 @@ textarea {
     min-height: 250px;
   }
 
-  .service-line .image-frame,
-  .service-line__mark {
+  .service-line .image-frame {
     height: 230px;
   }
 
